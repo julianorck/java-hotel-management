@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Guest</title>
+
+</head>
+<body>
+	<ui:composition template="/pages/template/layout.xhtml">
+		<ui:define name="content">
+			<div id="wrapper">
+				<h:form id="form">
+					<nav class="navbar-default navbar-side" role="navigation">
+
+					<div class="form-area col-md-12">
+
+						<label class="text-info search-head-line" for="daterange">#{language['label.reservation.search']}:</label>
+						<div class="form-group input-group col-md-11 date-button">
+							<span class="input-group-addon"> <i class="fa fa-calendar"></i>
+							</span> <input type="text" class="form-control" name="daterange"
+								value="" />
+						</div>
+						<h:panelGroup styleClass="hidden-start-date">
+							<h:inputHidden id="startdate"
+								value="#{reservationMBean.reservation.checkinDate}" >
+								<f:converter converterId="localDateTimeConverter" />
+							</h:inputHidden>
+						</h:panelGroup>
+						<h:panelGroup styleClass="hidden-end-date">
+							<h:inputHidden id="enddate" value="#{reservationMBean.reservation.checkoutDate}">
+								<f:converter converterId="localDateTimeConverter" />
+							</h:inputHidden>
+						</h:panelGroup>
+
+						<h:commandButton action="#{reservationMBean.setRoomsByDate}"
+							value="" style="display: none" styleClass="hiddenbutton">
+
+
+							<f:ajax execute="@all" render="resultado" />
+
+						</h:commandButton>
+
+					</div>
+
+					</nav>
+					<div id="page-wrapper" class="pre-scrollable">
+						<div id="page-inner">
+							<div class="col-md-12 ">
+								<div class="col-md-12">
+									<h1 id="date-headline" class="page-head-line"></h1>
+								</div>
+								<div class="clearfix" />
+								<h:panelGroup id="resultado">
+
+
+									<ui:repeat var="room" value="#{reservationMBean.roomList}"
+										varStatus="status">
+
+										<div class="panel panel-info">
+
+											<div class="panel-heading">#{room.roomType.type} -
+												#{language['label.room.number']}: #{room.roomNumber}</div>
+											<div class="panel-body">
+
+												<div class="col-md-4 ">
+													<div class="col-md-12 ">
+														<h:commandButton value="#{language['button.book']}"
+															action="#{reservationMBean.bookRoom(room)}"
+															class="btn btn-primary btn-lg ">
+
+
+														</h:commandButton>
+													</div>
+													<div class="col-md-12 ">
+														<span class="label label-warning">#{language['label.reservation.price']}:
+															#{room.formatedPrice}</span>
+													</div>
+													<div class="col-md-12 ">
+														<span class="label label-warning">#{language['label.reservation.occupancy']}:
+															#{room.roomType.occupancy}</span>
+													</div>
+
+												</div>
+												<div class="col-md-8">
+													<p>#{room.roomType.description}</p>
+												</div>
+
+											</div>
+
+										</div>
+
+									</ui:repeat>
+
+
+								</h:panelGroup>
+							</div>
+
+						</div>
+					</div>
+
+
+					<!-- /. NAV SIDE  -->
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+
+
+
+
+
+
+</body>
+</html>

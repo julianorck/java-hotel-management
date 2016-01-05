@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Guest</title>
+
+</head>
+<body>
+	<ui:composition template="/pages/template/layout.xhtml">
+
+
+		<ui:define name="content">
+
+			<form jsf:id="form" role="form">
+
+
+				<div class="search-button center-block col-md-12">
+
+					<div class="form-group col-md-5 col-md-offset-1">
+						<input type="text" class="form-control" jsf:id="search"
+							name="search" placeholder="#{language['label.guest.search']}"
+							jsf:value="#{guestListMBean.searchTerm}"></input>
+					</div>
+					<div class="form-group col-md-1 ">
+						<h:commandButton value="#{language['button.search']}"
+							styleClass="btn btn-primary btn-md pull-left"
+							action="#{guestListMBean.search}">
+							
+						</h:commandButton>
+
+
+					</div>
+
+				</div>
+
+				<div class="form-group col-md-11 btn-novo">
+					<h:commandButton value="#{language['button.new']}"
+						styleClass="btn btn-primary btn-md pull-right btn-lg"
+						action="guest">
+
+					</h:commandButton>
+
+
+				</div>
+
+				<div class="col-md-11 ">
+
+					<h:dataTable id="guestTable" value="#{guestListMBean.dtmdl}"
+						var="guest"
+						class="table table-responsive table-bordered table-striped">
+						<h:column>
+							<f:facet name="header">#{language['label.guest.id']}</f:facet>
+                                               <h:outputText value="#{guest.id}" /> 
+                                               <h:inputHidden value="#{guest.id}" binding="#{input}"/> 
+                                        </h:column>
+						<h:column>
+							<f:facet name="header">#{language['label.guest.name']}</f:facet>
+                                                #{guest.name}
+                                        </h:column>
+						<h:column>
+							<f:facet name="header">#{language['label.guest.email']}</f:facet>
+                                               #{guest.email}
+                                        </h:column>
+
+						<h:column>
+							<f:facet name="header">#{language['label.general.update']}</f:facet>
+							<h:commandButton value="#{language['button.update']}"
+								styleClass="btn btn-primary btn-sm center-block"
+								action="#{guestListMBean.update(input.value)}">
+								
+								
+							</h:commandButton>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">#{language['label.general.remove']}</f:facet>
+							<h:commandButton value="#{language['button.remove']}"
+								styleClass="btn btn-danger btn-sm center-block"
+								action="#{guestListMBean.remove(input.value)}">
+								
+
+							</h:commandButton>
+						</h:column>
+
+
+
+					</h:dataTable>
+				</div>
+				<div class="container-fluid">
+					<div class="col-xs-12">
+
+						<button class="btn btn-default btn-sm"
+							jsf:action="#{guestListMBean.firstPage()}"
+							jsf:disabled="#{guestListMBean.pagination.currentPage eq 0}">
+							<span class="glyphicon glyphicon-step-backward"></span>
+						</button>
+						<button class="btn btn-default btn-sm"
+							jsf:action="#{guestListMBean.previous}"
+							jsf:disabled="#{not guestListMBean.pagination.hasPreviousPage}">
+							<span class="glyphicon glyphicon-backward"></span>
+						</button>
+						&#xA0; <span class="text-primary">#{guestListMBean.pagination.currentPage+1}</span>
+						&#xA0;
+						<button class="btn btn-default btn-sm"
+							jsf:disabled="#{not guestListMBean.pagination.hasNextPage}"
+							jsf:action="#{guestListMBean.next()}">
+							<span class="glyphicon glyphicon-forward"></span>
+						</button>
+
+						<button class="btn btn-default btn-sm"
+							jsf:action="#{guestListMBean.lastPage()}"
+							jsf:disabled="#{guestListMBean.pagination.currentPage eq guestListMBean.pagination.finalPage}">
+							<span class="glyphicon glyphicon-step-forward"></span>
+						</button>
+
+
+						<h:selectOneMenu class=" btn" value="#{guestListMBean.pageSize}">
+							<f:selectItems value="#{guestListMBean.page}" var="pg"
+								itemLabel="#{pg}" itemValue="#{pg}" />
+							<f:ajax listener="#{guestListMBean.recreatePageSize}"
+								render="form" />
+						</h:selectOneMenu>
+					</div>
+
+				</div>
+
+
+
+			</form>
+		</ui:define>
+	</ui:composition>
+
+
+
+</body>
+</html>

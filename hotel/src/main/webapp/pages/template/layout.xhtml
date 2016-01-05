@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+<h:head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Bootstrap Admin Template : Dream</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="#{facesContext.externalContext.requestContextPath}/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICONS  -->
+    <link href="#{facesContext.externalContext.requestContextPath}/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="#{facesContext.externalContext.requestContextPath}/assets/css/style.css" rel="stylesheet" />
+    <!-- date bootstrap picker  -->   
+    <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/assets/css/daterangepicker.css" />
+    
+
+	
+</h:head>
+<h:body>
+	<div id="page">
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/pages/template/basicheader.xhtml" />
+			</ui:insert>
+		</div>
+		<div id="messages">
+			<ui:insert name="messages">
+				<ui:include src="/pages/template/messages.xhtml" />
+			</ui:insert>
+		</div>
+		<div id="content" class="content-wrapper">
+			<ui:insert name="content">
+
+			</ui:insert>
+		</div>
+		<div class="clearfix"></div>
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/pages/template/basicfooter.xhtml" />
+			</ui:insert>
+		</div>
+	</div>
+	<script src="#{facesContext.externalContext.requestContextPath}/assets/js/jquery-1.11.1.js"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="#{facesContext.externalContext.requestContextPath}/assets/js/bootstrap.js"></script>
+    <script src="#{facesContext.externalContext.requestContextPath}/assets/js/app.js"></script>
+    <!-- datepicker SCRIPTS  -->      
+    <script type="#{facesContext.externalContext.requestContextPath}/assets/js/moment.min.js"></script>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/assets/js/moment.min.js"></script>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/assets/js/daterangepicker.js"></script>
+    
+	
+</h:body>
+</html>
+
+

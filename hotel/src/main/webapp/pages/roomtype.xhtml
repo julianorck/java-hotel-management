@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Guest</title>
+
+</head>
+<body>
+	<ui:composition template="/pages/template/layout.xhtml">
+		<ui:define name="content">
+			<div class="col-md-8 container ">
+
+				<div class="form-area col-md-6">
+					<form jsf:id="form" role="form">
+						<br style="clear: both"></br>
+						<h3 style="margin-bottom: 25px; text-align: left;">Contact
+							Form</h3>
+						<h:inputHidden value="#{roomTypeMBean.roomType.id}" />
+						<div class="form-group ">
+							<input type="text" class="form-control" jsf:id="name" name="name"
+								placeholder="Name" jsf:value="#{roomTypeMBean.roomType.description}" required="true"></input>
+						</div>
+						<div class="form-group ">
+							<input type="number" class="form-control" jsf:id="occupancy"
+								name="occupancy" 
+								jsf:value="#{roomTypeMBean.roomType.occupancy}"></input>
+						</div>
+
+						<div class="input-group ">
+							<span class="input-group-addon">$</span> <input type="number" jsf:id="rate"
+								jsf:value="#{roomTypeMBean.roomType.rate}" min="0" step="0.01" data-number-to-fixed="2"
+								data-number-stepfactor="100" class="form-control currency"
+								 />
+						</div>
+						<br/>
+
+						
+						<div class="form-group ">
+							<button jsf:action="#{roomTypeMBean.save}"
+								class="btn btn-primary btn-lg pull-right">Save</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+
+
+		</ui:define>
+	</ui:composition>
+
+
+
+
+
+
+</body>
+</html>

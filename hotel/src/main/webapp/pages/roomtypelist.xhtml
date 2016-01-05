@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>RoomType</title>
+
+</head>
+<body>
+	<ui:composition template="/pages/template/layout.xhtml">
+
+
+		<ui:define name="content">
+
+			<form jsf:id="form" role="form">
+				<div class="form-group col-md-11 btn-novo">
+					<h:commandButton value="#{language['button.new']}"
+						styleClass="btn btn-primary btn-md pull-right"
+						action="roomtype">
+
+					</h:commandButton>
+
+
+				</div>
+
+
+				<div class="col-md-11 ">
+
+					<h:dataTable value="#{roomTypeMBean.roomTypeList}" var="roomType"
+						class="table table-responsive table-bordered table-striped">
+						<h:column>
+							<f:facet name="header">#{language['label.type.id']}</f:facet>
+                                                #{roomType.id}
+                                        </h:column>
+						<h:column>
+							<f:facet name="header">#{language['label.type.description']}</f:facet>
+                                                #{roomType.description}
+                                        </h:column>
+						<h:column>
+							<f:facet name="header">#{language['label.type.occupancy']}</f:facet>
+                                               #{roomType.occupancy}
+                                        </h:column>
+						<h:column>
+							<f:facet name="header">#{language['label.type.rate']}</f:facet>
+                                               #{roomType.rate}
+                                        </h:column>
+                                        
+                                        <h:column>
+							<f:facet name="header">#{language['label.general.update']}</f:facet>
+							<h:commandButton value="#{language['button.update']}"
+								styleClass="btn btn-primary btn-sm center-block"
+								action="#{roomTypeMBean.update(roomType)}">
+								
+								
+							</h:commandButton>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">#{language['label.general.remove']}</f:facet>
+							<h:commandButton value="#{language['button.remove']}"
+								styleClass="btn btn-danger btn-sm center-block"
+								action="#{roomTypeMBean.remove(roomType)}">
+								
+
+							</h:commandButton>
+						</h:column>
+					</h:dataTable>
+				</div>
+
+
+			</form>
+		</ui:define>
+	</ui:composition>
+
+
+
+</body>
+</html>

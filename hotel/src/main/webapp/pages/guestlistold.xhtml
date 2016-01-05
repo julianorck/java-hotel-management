@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Guest</title>
+
+</head>
+<body>
+	<ui:composition template="/pages/template/layout.xhtml">
+
+
+		<ui:define name="content">
+
+			<form jsf:id="form" role="form">
+
+
+				<div class="search-button center-block col-md-12">
+
+					<div class="form-group col-md-5 col-md-offset-1">
+						<input type="text" class="form-control" jsf:id="search"
+							name="search" placeholder="Search Term"
+							jsf:value="#{guestMBean.searchTerm}"></input>
+					</div>
+					<div class="form-group col-md-1 ">
+						<h:commandButton value="Search"
+							styleClass="btn btn-primary btn-md pull-left"
+							action="#{guestMBean.search}">
+							<f:ajax listener="#{guestMBean.search}" render="guestTable"
+								event="click" execute="search" />
+						</h:commandButton>
+
+
+					</div>
+
+				</div>
+
+				<div class="form-group col-md-11 btn-novo">
+					<h:commandButton value="Novo"
+						styleClass="btn btn-primary btn-md pull-right btn-lg"
+						action="guest">
+
+					</h:commandButton>
+
+
+				</div>
+
+				<div class="panel-group">
+					<div class="panel panel-info">
+
+						<div class="panel-heading">List of DvDs</div>
+						<h:form id="listF1">
+							<h:panelGroup>
+								<h:dataTable value="#{guestMBean.guestList}" var="guest"
+									class="table table-responsive table-bordered table-striped">
+									<h:column>
+										<f:facet name="header">id</f:facet>
+                                                #{guest.id}
+                                        </h:column>
+									<h:column>
+										<f:facet name="header">name</f:facet>
+                                                #{guest.name}
+                                        </h:column>
+									<h:column>
+										<f:facet name="header">email</f:facet>
+                                               #{guest.email}
+                                        </h:column>
+								</h:dataTable>
+							</h:panelGroup>
+
+							<p />
+						</h:form>
+					</div>
+
+				</div>
+
+
+				<!-- <div id="divTable"
+					class="col-md-12 container table-responsive pull-right">
+					<p:dataTable id="guestTable"
+						tableStyleClass="table-bordered table-striped" var="guest"
+						value="#{guestMBean.guestList}" paginator="true" rows="10"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+						rowsPerPageTemplate="5,10,15"
+						style="width: 80%;margin-left: 10%;margin-right: 10%;"
+						paginatorPosition="bottom">
+						<p:column headerText="Id">
+							<h:outputText value="#{guest.id}" />
+						</p:column>
+						<p:column headerText="Name">
+							<h:outputText value="#{guest.name}" />
+						</p:column>
+
+						<p:column headerText="E-mail">
+							<h:outputText value="#{guest.email}" />
+						</p:column>
+
+						<p:column headerText="City">
+							<h:outputText value="#{guest.city}" />
+						</p:column>
+
+						<p:column headerText="State">
+							<h:outputText value="#{guest.state}" />
+						</p:column>
+
+						<p:column headerText="Editar">
+							<h:commandButton value="Update"
+								styleClass="btn btn-primary btn-sm center-block"
+								action="#{guestMBean.update(guest)}" />
+						</p:column>
+
+
+						<p:column headerText="Remover">
+
+							<h:commandButton value="Remover"
+								styleClass="btn btn-danger btn-sm center-block"
+								action="#{guestMBean.remove(guest)}">
+								<f:ajax listener="#{guestMBean.remove(guest)}"
+									render="guestTable" event="click" />
+							</h:commandButton>
+						</p:column>
+					</p:dataTable>
+				</div> -->
+			</form>
+		</ui:define>
+	</ui:composition>
+
+
+
+</body>
+</html>
