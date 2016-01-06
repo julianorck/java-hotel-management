@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Employee</title>
+
+</head>
+<body>
+	<ui:composition template="/pages/template/layout.xhtml">
+
+
+		<ui:define name="content">
+
+			<form jsf:id="form" role="form">
+				<div class="form-group col-md-11 btn-novo">
+					<h:commandButton value="#{language['button.new']}"
+						styleClass="btn btn-primary btn-md pull-right" action="employee">
+
+					</h:commandButton>
+
+
+				</div>
+
+
+				<div class="col-md-11 ">
+
+					<h:dataTable value="#{employeeMBean.employeeList}" var="employee"
+						class="table table-responsive table-bordered table-striped">
+						<h:column>
+							<f:facet name="header">#{language['label.employee.id']}</f:facet>
+                                                #{employee.id}
+                                        </h:column>
+						<h:column>
+							<f:facet name="header">#{language['label.employee.username']}</f:facet>
+                                                #{employee.userName}
+                                        </h:column>
+						<h:column>
+							<f:facet name="header">#{language['label.employee.type']}</f:facet>
+                                               #{employee.type}
+                                        </h:column>
+
+
+						<h:column>
+							<f:facet name="header">#{language['label.general.update']}</f:facet>
+							<h:commandButton value="#{language['button.update']}"
+								styleClass="btn btn-primary btn-sm center-block"
+								action="#{employeeMBean.update(employee)}">
+
+
+							</h:commandButton>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">#{language['label.general.remove']}</f:facet>
+							<h:commandButton value="#{language['button.remove']}"
+								styleClass="btn btn-danger btn-sm center-block"
+								action="#{roomMBean.remove(employee)}">
+
+
+							</h:commandButton>
+						</h:column>
+					</h:dataTable>
+				</div>
+
+
+			</form>
+		</ui:define>
+	</ui:composition>
+
+
+
+</body>
+</html>

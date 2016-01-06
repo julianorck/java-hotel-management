@@ -68,9 +68,7 @@ public class ReservationMBean implements Serializable {
 
 	public String save() {
 		final Employee emp = new Employee();
-		emp.setPassword("adoooo");
-		emp.setUserName("nomeiu");
-		emp.setType("admoo");
+
 		reservation.setGuest(guest);
 		final List<Room> rooms = new ArrayList<>();
 		rooms.add(room);
@@ -182,7 +180,7 @@ public class ReservationMBean implements Serializable {
 		return bundle;
 	}
 
-	public void setBundle(ResourceBundle bundle) {
+	public void setBundle(final ResourceBundle bundle) {
 		this.bundle = bundle;
 	}
 

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hotel Login</title>
+<!-- CSS -->
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
+<link rel="stylesheet"
+	href="#{facesContext.externalContext.requestContextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="#{facesContext.externalContext.requestContextPath}/assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="#{facesContext.externalContext.requestContextPath}/assets/css/form-elements.css" />
+<link rel="stylesheet"
+	href="#{facesContext.externalContext.requestContextPath}/assets/css/style-login.css" />
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+<body>
+
+	<!-- Top content -->
+	<div class="top-content">
+
+		<div class="inner-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2 text">
+						<h1>
+							<strong>Hotel Management</strong> Login 
+						</h1>
+						
+						
+					</div>
+				</div>
+				<div>
+					
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3 form-box">
+						<div class="form-top">
+							<div class="form-top-left">
+								<h3>#{language['label.login.title1']}</h3>
+								<p>#{language['label.login.title2']}:</p>
+							</div>
+							<div class="form-top-right">
+								<i class="fa fa-lock"></i>
+							</div>
+						</div>
+						<div class="form-bottom">
+							<form jsf:id="formlogin" role="form" action="" method="post" class="login-form">
+								<h:panelGroup><h:messages /></h:panelGroup>
+								<div class="form-group">
+									<label class="sr-only" for="form-username">#{language['label.login.username']}</label> <input
+										type="text" name="form-username" placeholder="#{language['label.login.username']}..."
+										class="form-username form-control" jsf:id="form-username" value="#{loginMBean.username}"/>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="form-password">#{language['label.login.password']}</label> <input
+										type="password" name="form-password" placeholder="#{language['label.login.password']}..."
+										class="form-password form-control" jsf:id="form-password" value="#{loginMBean.password}"/>
+								</div>
+								<button type="submit" jsf:action="#{loginMBean.login}" class="btn">#{language['label.login.sign']}</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- Javascript -->
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/assets/js/jquery-1.11.1.js"></script>
+	<!-- BOOTSTRAP SCRIPTS  -->
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/assets/js/bootstrap.js"></script>
+
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/assets/js/jquery.backstretch.min.js"></script>
+
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/assets/js/scripts.js"></script>
+
+
+
+</body>
+</html>

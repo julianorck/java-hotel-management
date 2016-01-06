@@ -9,6 +9,8 @@ public final class PageAddress {
 	public static final String ROOM_TYPE_LIST = "roomtypeelist";
 	public static final String RESERVATION = "reservation";
 	public static final String RESERVATION_STEPS = "reservationsteps";
+	public static final String EMPLOYEE_LIST = "employeelist";
+	public static final String EMPLOYEE = "employee";
 
 	private PageAddress() {
 

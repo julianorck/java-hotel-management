@@ -40,7 +40,7 @@
 
 				<div class="form-group col-md-11 btn-novo">
 					<h:commandButton value="#{language['button.new']}"
-						styleClass="btn btn-primary btn-md pull-right btn-lg"
+						styleClass="btn btn-primary btn-md pull-right "
 						action="guest">
 
 					</h:commandButton>
@@ -70,7 +70,7 @@
 						<h:column>
 							<f:facet name="header">#{language['label.general.update']}</f:facet>
 							<h:commandButton value="#{language['button.update']}"
-								styleClass="btn btn-primary btn-sm center-block"
+								styleClass="btn btn-primary btn-xs center-block"
 								action="#{guestListMBean.update(input.value)}">
 								
 								
@@ -80,7 +80,7 @@
 						<h:column>
 							<f:facet name="header">#{language['label.general.remove']}</f:facet>
 							<h:commandButton value="#{language['button.remove']}"
-								styleClass="btn btn-danger btn-sm center-block"
+								styleClass="btn btn-danger btn-xs center-block"
 								action="#{guestListMBean.remove(input.value)}">
 								
 

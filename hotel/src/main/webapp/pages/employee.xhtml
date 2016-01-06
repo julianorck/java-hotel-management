@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Employee</title>
+
+</head>
+<body>
+	<ui:composition template="/pages/template/layout.xhtml">
+		<ui:define name="content">
+			<div class="col-md-8 container ">
+
+				<div class="form-area col-md-6">
+					<form jsf:id="form" role="form">
+						<br style="clear: both"></br>
+						<h3 style="margin-bottom: 25px; text-align: left;">Contact
+							Form</h3>
+						<h:inputHidden value="#{employeeMBean.employee.id}" />
+						<div class="form-group ">
+							<input type="text" class="form-control" jsf:id="username"
+								name="username" placeholder="Name"
+								jsf:value="#{employeeMBean.employee.userName}" required="true"></input>
+						</div>
+						<div class="form-group ">
+							<input type="password" class="form-control" jsf:id="password"
+								name="password" jsf:value="#{employeeMBean.employee.password}"
+								required="true"></input>
+						</div>
+						<div class="form-group ">
+							<div class="selectContainer">
+								<h:selectOneMenu id="employee"
+									value="#{employeeMBean.employee.type}" styleClass="form-control">
+									<f:selectItems value="#{employeeMBean.userTypeValues}"
+										var="type" itemValue="#{type}" itemLabel="#{type.label}" />
+								</h:selectOneMenu>
+							</div>
+						</div>
+
+
+						<br />
+
+
+						<div class="form-group ">
+							<button jsf:action="#{employeeMBean.save}"
+								class="btn btn-primary btn-lg pull-right">Save</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+
+
+		</ui:define>
+	</ui:composition>
+
+
+
+
+
+
+</body>
+</html>

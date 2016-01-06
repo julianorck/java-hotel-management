@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.hotel.common.model.UserType;
 
 /**
  * The persistent class for the employee database table.
@@ -27,13 +31,14 @@ public class Employee implements Serializable {
 	@SequenceGenerator(name = "EMPLOYEE_ID_GENERATOR", sequenceName = "employee_id_seq", allocationSize = 1, initialValue = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EMPLOYEE_ID_GENERATOR")
 	@Column(unique = true, nullable = false)
-	private Integer id;
+	private Long id;
 
 	@Column(length = 255)
 	private String password;
 
 	@Column(length = 255)
-	private String type;
+	@Enumerated(EnumType.STRING)
+	private UserType type;
 
 	@Column(name = "user_name", length = 20)
 	private String userName;
@@ -45,11 +50,11 @@ public class Employee implements Serializable {
 	public Employee() {
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(final Integer id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -61,11 +66,11 @@ public class Employee implements Serializable {
 		this.password = password;
 	}
 
-	public String getType() {
+	public UserType getType() {
 		return this.type;
 	}
 
-	public void setType(final String type) {
+	public void setType(final UserType type) {
 		this.type = type;
 	}
 
