@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+
 <body>
 	<ui:composition>
 		<!-- LOGO HEADER END-->
 
 		<section class="menu-section">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="navbar-collapse collapse ">
-						<ul id="menu-top" class="nav navbar-nav navbar-right">
-							<li class="topli"><a class="menu-top-active" href="#{facesContext.externalContext.requestContextPath}/pages/reservation.xhtml">#{language['menu.reservation']}</a></li>
-							<li class="topli"><a href="#{facesContext.externalContext.requestContextPath}/pages/roomlist.xhtml">#{language['menu.room']}</a></li>
-							<li class="topli"><a href="#{facesContext.externalContext.requestContextPath}/pages/employeeList.xhtml">#{language['menu.employee']}</a></li>
+			<h:form>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="navbar-collapse collapse ">
+							<ul id="menu-top" class="nav navbar-nav navbar-right">
+								<li class="topli"><a class="menu-top-active"
+									href="#{facesContext.externalContext.requestContextPath}/pages/reservation.xhtml">#{language['menu.reservation']}</a></li>
+								<li class="topli"><a
+									href="#{facesContext.externalContext.requestContextPath}/pages/roomlist.xhtml">#{language['menu.room']}</a></li>
+								<li class="topli"><a
+									href="#{facesContext.externalContext.requestContextPath}/pages/employeeList.xhtml">#{language['menu.employee']}</a></li>
+
+								<li class="topli"><a
+									href="#{facesContext.externalContext.requestContextPath}/pages/roomtypelist.xhtml">#{language['menu.roomtype']}</a></li>
+								<li class="topli"><a
+									href="#{facesContext.externalContext.requestContextPath}/pages/guestlist.xhtml">#{language['menu.guest']}</a></li>
 								
-							<li class="topli"><a href="#{facesContext.externalContext.requestContextPath}/pages/roomtypelist.xhtml">#{language['menu.roomtype']}</a></li>
-							<li class="topli"><a href="#{facesContext.externalContext.requestContextPath}/pages/guestlist.xhtml">#{language['menu.guest']}</a></li>
-							
+								
+								<li class="topli"><h:commandLink action="#{loginMBean.logout()}" value="#{language['menu.logout']}" /></li>
 
-						</ul>
+							</ul>
+						</div>
 					</div>
-				</div>
 
-			</div>
+				</div>
+			</h:form>
 		</div>
 		</section>
 		<!-- MENU SECTION END-->
