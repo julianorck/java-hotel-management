@@ -21,8 +21,8 @@
 	
 </h:head>
 <h:body>
-	<div id="page">
-		<div id="header">
+	
+		<div id="header" class=" navbar navbar-fixed-top">
 			<ui:insert name="header">
 				<ui:include src="/pages/template/basicheader.xhtml" />
 			</ui:insert>
@@ -38,12 +38,12 @@
 			</ui:insert>
 		</div>
 		<div class="clearfix"></div>
-		<div id="footer">
+		
 			<ui:insert name="footer">
 				<ui:include src="/pages/template/basicfooter.xhtml" />
 			</ui:insert>
-		</div>
-	</div>
+		
+	
 	<script src="#{facesContext.externalContext.requestContextPath}/assets/js/jquery-1.11.1.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="#{facesContext.externalContext.requestContextPath}/assets/js/bootstrap.js"></script>
