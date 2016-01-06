@@ -35,7 +35,7 @@ public abstract class PaginationBean implements Serializable {
 	public void postConstruct() {
 
 		setPage(new int[] { 5, 10, 15, 20, 30, 50 });
-		setPageSize(10);
+		setPageSize(5);
 	}
 
 	public PaginationHelper getPagination() {
