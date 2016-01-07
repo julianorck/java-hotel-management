@@ -55,6 +55,9 @@ public class Guest implements Serializable {
 	@Column(name = "street_number", length = 255)
 	private String streetNumber;
 
+	@Column(unique = true, nullable = false, length = 20)
+	private String document;
+
 	public Guest() {
 	}
 
@@ -144,6 +147,14 @@ public class Guest implements Serializable {
 
 	public void setStreetNumber(final String streetNumber) {
 		this.streetNumber = streetNumber;
+	}
+
+	public String getDocument() {
+		return document;
+	}
+
+	public void setDocument(final String document) {
+		this.document = document;
 	}
 
 }

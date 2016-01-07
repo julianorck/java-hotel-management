@@ -57,4 +57,9 @@ public class GuestServices implements GenericServices {
 		guestRepository.remove(new Guest(), guestId);
 	}
 
+	public Guest findByDocument(final String document) {
+
+		return guestRepository.findGuestByDocument(document);
+	}
+
 }

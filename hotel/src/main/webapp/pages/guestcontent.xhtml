@@ -5,26 +5,37 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+	<h:panelGroup id="guest-group">
+		<div class="col-md-8 container ">
 
-	<div class="col-md-8 container ">
+			<div class="form-area ">
 
-		<div class="form-area ">
-			
 				<br style="clear: both"></br>
 				<h3 style="margin-bottom: 25px; text-align: left;">#{language['label.reservation.guestinfo']}</h3>
 				<h:inputHidden value="#{guest.id}" />
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control guestname" jsf:id="name" name="name"
-						placeholder="#{language['label.guest.name']}" jsf:value="#{guest.name}"
-						required="true"></input>
+					<input type="text" class="form-control guestname" jsf:id="document"
+						name="document" placeholder="#{language['label.guest.document']}"
+						jsf:value="#{guest.document}" required="true">
+					<f:ajax event="blur" listener="#{guestListMBean.findByDocument}"
+						render="guest-group" />
+					</input>
+
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control guestname" jsf:id="name"
+						name="name" placeholder="#{language['label.guest.name']}"
+						jsf:value="#{guest.name}" required="true"></input>
 				</div>
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" jsf:id="email" name="email"
-						placeholder="#{language['label.guest.email']}" jsf:value="#{guest.email}"></input>
+						placeholder="#{language['label.guest.email']}"
+						jsf:value="#{guest.email}"></input>
 				</div>
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" jsf:id="phone" name="phone"
-						placeholder="#{language['label.guest.phone']}" jsf:value="#{guest.phone}"></input>
+						placeholder="#{language['label.guest.phone']}"
+						jsf:value="#{guest.phone}"></input>
 				</div>
 
 				<div class="form-group col-md-6">
@@ -40,16 +51,19 @@
 				</div>
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" jsf:id="streetNumber"
-						name="streetNumber" placeholder="#{language['label.guest.streetnumber']}"
+						name="streetNumber"
+						placeholder="#{language['label.guest.streetnumber']}"
 						jsf:value="#{guest.streetNumber}"></input>
 				</div>
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" jsf:id="city" name="city"
-						placeholder="#{language['label.guest.city']}" jsf:value="#{guest.city}"></input>
+						placeholder="#{language['label.guest.city']}"
+						jsf:value="#{guest.city}"></input>
 				</div>
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" jsf:id="state" name="state"
-						placeholder="#{language['label.guest.state']}" jsf:value="#{guest.state}"></input>
+						placeholder="#{language['label.guest.state']}"
+						jsf:value="#{guest.state}"></input>
 				</div>
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" jsf:id="country"
@@ -67,8 +81,9 @@
 					<button jsf:action="#{guestListMBean.save}"
 						class="btn btn-primary btn-lg pull-right" rendered="#{showbutton}">#{language['button.save']}</button>
 				</div>
-			
-		</div>
 
-	</div>
+			</div>
+
+		</div>
+	</h:panelGroup>
 </ui:composition>

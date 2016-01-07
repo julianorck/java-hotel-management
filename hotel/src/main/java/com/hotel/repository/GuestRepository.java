@@ -1,6 +1,7 @@
 package com.hotel.repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
@@ -37,6 +38,19 @@ public class GuestRepository extends GenericRepository<Guest> {
 		}
 
 		return findByParameters(clause.toString(), filter.getPaginationData(), queryParameters, "name ASC");
+	}
+
+	public Guest findGuestByDocument(final String document) {
+		final List<Guest> listGuest = getEntityManager().createQuery(
+				"Select e From " + getPersistentClass().getSimpleName()
+						+ " e where e.document = :doc")
+				.setParameter("doc", document)
+				.getResultList();
+		Guest guest = null;
+		if (!listGuest.isEmpty()) {
+			guest = listGuest.get(0);
+		}
+		return guest;
 	}
 
 }

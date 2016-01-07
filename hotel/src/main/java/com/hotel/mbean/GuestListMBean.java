@@ -82,6 +82,17 @@ public class GuestListMBean extends PaginationBean implements Serializable {
 
 	}
 
+	public void findByDocument() {
+		if (this.guest.getDocument() == null || this.guest.getDocument().isEmpty())
+			return;
+
+		final Guest guestTmp = guestServices.findByDocument(guest.getDocument());
+		if (guestTmp == null) {
+			return;
+		}
+		setGuest(guestTmp);
+	}
+
 	@Override
 	protected GenericServices getServiceClass() {
 
